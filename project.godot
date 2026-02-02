@@ -15,11 +15,19 @@ run/main_scene="uid://b7os5b7rxofnb"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MusicMeta="*uid://caxd571dq4yne"
+
 [display]
 
 window/size/viewport_width=291
 window/size/viewport_height=631
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/MusicMeta/plugin.cfg")
 
 [physics]
 

@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://c231calg5kh1g" path="res://src/circle.gdshader" id="3_3cfgd"]
 [ext_resource type="FontFile" uid="uid://di7v2cjyjewnv" path="res://src/assets/roboto.ttf" id="3_fyndt"]
 [ext_resource type="Texture2D" uid="uid://cbfgtlq7y30hu" path="res://src/assets/oranges.jpg" id="4_3cfgd"]
+[ext_resource type="Texture2D" uid="uid://jpf10jh1whrf" path="res://src/assets/outline.svg" id="4_kmhfv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmhfv"]
 bg_color = Color(0.7411765, 0.5764706, 0.9764706, 1)
@@ -63,6 +64,12 @@ theme_override_constants/margin_bottom = 16
 [node name="CenterContainer" type="CenterContainer" parent="UI/PanelContainer/VBoxContainer/AlbumArt" unique_id=492188956]
 layout_mode = 2
 
+[node name="Outline" type="TextureRect" parent="UI/PanelContainer/VBoxContainer/AlbumArt/CenterContainer" unique_id=226677849]
+custom_minimum_size = Vector2(154, 154)
+layout_mode = 2
+texture = ExtResource("4_kmhfv")
+expand_mode = 1
+
 [node name="AlbumArt" type="TextureRect" parent="UI/PanelContainer/VBoxContainer/AlbumArt/CenterContainer" unique_id=426749869]
 material = SubResource("ShaderMaterial_kmhfv")
 custom_minimum_size = Vector2(150, 150)
@@ -110,3 +117,9 @@ size_flags_horizontal = 3
 theme = ExtResource("2_gh0ne")
 theme_override_colors/font_color = Color(0.74509805, 0.5764706, 0.91764706, 1)
 text = "Next"
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=759371699]
+
+[connection signal="pressed" from="UI/PanelContainer/VBoxContainer/PlaybackControls/HBoxContainer/Prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="UI/PanelContainer/VBoxContainer/PlaybackControls/HBoxContainer/PlayPause" to="." method="_on_play_pause_pressed"]
+[connection signal="pressed" from="UI/PanelContainer/VBoxContainer/PlaybackControls/HBoxContainer/Next" to="." method="_on_next_pressed"]
