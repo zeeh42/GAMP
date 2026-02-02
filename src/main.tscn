@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://b7os5b7rxofnb"]
+
+[ext_resource type="Script" uid="uid://c17s1pgoly2s6" path="res://src/main.gd" id="1_eewff"]
+[ext_resource type="Theme" uid="uid://cli1b8yc7aymm" path="res://src/themes/dracula.tres" id="2_gh0ne"]
+[ext_resource type="Shader" uid="uid://c231calg5kh1g" path="res://src/circle.gdshader" id="3_3cfgd"]
+[ext_resource type="FontFile" uid="uid://di7v2cjyjewnv" path="res://src/assets/roboto.ttf" id="3_fyndt"]
+[ext_resource type="Texture2D" uid="uid://cbfgtlq7y30hu" path="res://src/assets/oranges.jpg" id="4_3cfgd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmhfv"]
+bg_color = Color(0.7411765, 0.5764706, 0.9764706, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmhfv"]
+shader = ExtResource("3_3cfgd")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyndt"]
+bg_color = Color(0.26666668, 0.2784314, 0.3529412, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.26666668, 0.2784314, 0.3529412, 1)
+
+[node name="Main" type="Node" unique_id=1879143848]
+script = ExtResource("1_eewff")
+
+[node name="UI" type="Control" parent="." unique_id=1990466157]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI" unique_id=285699282]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_gh0ne")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelContainer" unique_id=1870178517]
+layout_mode = 2
+
+[node name="CurrentlyPlaying" type="PanelContainer" parent="UI/PanelContainer/VBoxContainer" unique_id=1408587190]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kmhfv")
+
+[node name="Label" type="Label" parent="UI/PanelContainer/VBoxContainer/CurrentlyPlaying" unique_id=1413901855]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.15686275, 0.16470589, 0.21176471, 1)
+theme_override_fonts/font = ExtResource("3_fyndt")
+text = "Song Title - Artist Name"
+horizontal_alignment = 1
+
+[node name="AlbumArt" type="MarginContainer" parent="UI/PanelContainer/VBoxContainer" unique_id=101849424]
+layout_mode = 2
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/PanelContainer/VBoxContainer/AlbumArt" unique_id=492188956]
+layout_mode = 2
+
+[node name="AlbumArt" type="TextureRect" parent="UI/PanelContainer/VBoxContainer/AlbumArt/CenterContainer" unique_id=426749869]
+material = SubResource("ShaderMaterial_kmhfv")
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("4_3cfgd")
+expand_mode = 1
+
+[node name="CurrentTime" type="Label" parent="UI/PanelContainer/VBoxContainer" unique_id=1734540326]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74509805, 0.5764706, 0.91764706, 1)
+text = "6:21"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="UI/PanelContainer/VBoxContainer" unique_id=480448468]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/separator = SubResource("StyleBoxFlat_fyndt")
+
+[node name="PlaybackControls" type="MarginContainer" parent="UI/PanelContainer/VBoxContainer" unique_id=1037275469]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/PanelContainer/VBoxContainer/PlaybackControls" unique_id=1801977719]
+layout_mode = 2
+
+[node name="Prev" type="Button" parent="UI/PanelContainer/VBoxContainer/PlaybackControls/HBoxContainer" unique_id=1851327370]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_gh0ne")
+theme_override_colors/font_color = Color(0.74509805, 0.5764706, 0.91764706, 1)
+text = "Prev"
+
+[node name="PlayPause" type="Button" parent="UI/PanelContainer/VBoxContainer/PlaybackControls/HBoxContainer" unique_id=569326143]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_gh0ne")
+theme_override_colors/font_color = Color(0.74509805, 0.5764706, 0.91764706, 1)
+text = "Play/Pause"
+
+[node name="Next" type="Button" parent="UI/PanelContainer/VBoxContainer/PlaybackControls/HBoxContainer" unique_id=742035580]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_gh0ne")
+theme_override_colors/font_color = Color(0.74509805, 0.5764706, 0.91764706, 1)
+text = "Next"
